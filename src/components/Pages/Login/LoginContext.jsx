@@ -2,8 +2,8 @@ import React, { useContext, useReducer } from "react";
 import { createContext } from "react";
 
 /*Констаты */
-const ADD_LOGIN = "ADD_LOGIN";
-const REMOVE_LOGIN = "REMOVE_LOGIN";
+export const ADD_LOGIN = "ADD_LOGIN";
+export const REMOVE_LOGIN = "REMOVE_LOGIN";
 
 /*Создание контекста */
 export const LoginContext = createContext();
@@ -47,6 +47,7 @@ export const LoginProvider = ({ children }) => {
         userToken: state.userToken,
         addLogin,
         removeLogin,
+        dispatch,
       }}
     >
       {children}

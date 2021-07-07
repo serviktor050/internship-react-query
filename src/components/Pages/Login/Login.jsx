@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useLogin } from "./LoginContext";
 import { Redirect } from "react-router-dom";
+import { ADD_LOGIN } from "./LoginContext";
 
 const fetchLogin = async (form) => {
   const response = await fetch("https://reqres.in/api/login", {
@@ -21,7 +22,7 @@ const fetchLogin = async (form) => {
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const mutation = useMutation(fetchLogin);
-  const { userToken, addLogin } = useLogin();
+  const { dispatch } = useLogin();
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -35,9 +36,9 @@ export default function Login() {
 
   useEffect(() => {
     if (mutation.data) {
-      addLogin(mutation.data.token);
+      dispatch({ type: ADD_LOGIN, payload: mutation.data.token });
     }
-  }, [mutation.isSuccess]);
+  }, [dispatch, mutation.isSuccess, mutation.data]);
 
   return (
     <>

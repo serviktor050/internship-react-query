@@ -19,11 +19,11 @@ export default function Menu() {
               Login
             </NavLink>
           </div>
-          <div className="menu-item">
+          {/* <div className="menu-item">
             <NavLink to="/register" activeClassName="menu-item-selected">
               Register
             </NavLink>
-          </div>
+          </div> */}
         </div>
       )}
       {userToken !== null && (
@@ -33,7 +33,7 @@ export default function Menu() {
               Главная
             </NavLink>
           </div>
-          <div className="menu-item">
+          {/* <div className="menu-item">
             <NavLink
               to="/list-users"
               activeClassName="menu-item-selected"
@@ -55,7 +55,7 @@ export default function Menu() {
             <NavLink to="/timer" activeClassName="menu-item-selected" exact>
               Таймер
             </NavLink>
-          </div>
+          </div> */}
           <div
             className="menu-item-logout"
             onClick={() => {

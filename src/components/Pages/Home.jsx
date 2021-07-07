@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useLogin } from "../Pages/Login/LoginContext";
+import { ADD_LOGIN } from "../Pages/Login/LoginContext";
 
 export default function Home() {
-  const { userToken, addLogin } = useLogin();
+  const { userToken, dispatch } = useLogin();
 
   let user = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
     if (user !== null) {
-      addLogin(user);
+      dispatch({ type: ADD_LOGIN, payload: user });
     }
-  }, [user]);
+  }, [dispatch, user]);
 
   return (
     <>

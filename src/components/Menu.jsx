@@ -33,7 +33,7 @@ export default function Menu() {
               Главная
             </NavLink>
           </div>
-          {/* <div className="menu-item">
+          <div className="menu-item">
             <NavLink
               to="/list-users"
               activeClassName="menu-item-selected"
@@ -42,7 +42,7 @@ export default function Menu() {
               Пользователи
             </NavLink>
           </div>
-          <div className="menu-item">
+          {/* <div className="menu-item">
             <NavLink
               to="/mortgage-calculator"
               activeClassName="menu-item-selected"

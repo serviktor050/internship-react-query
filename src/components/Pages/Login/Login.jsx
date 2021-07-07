@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useLogin } from "./LoginContext";
 import { Redirect } from "react-router-dom";
@@ -21,7 +21,6 @@ const fetchLogin = async (form) => {
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const mutation = useMutation(fetchLogin);
-  console.log(mutation);
   const { userToken, addLogin } = useLogin();
 
   const handleChange = (evt) => {
@@ -33,14 +32,16 @@ export default function Login() {
     event.preventDefault();
     mutation.mutate(form);
   };
-  /*
-  if (mutation.data) {
-    addLogin(mutation.data.token);
-  }
-*/
+
+  useEffect(() => {
+    if (mutation.data) {
+      addLogin(mutation.data.token);
+    }
+  }, [mutation.isSuccess]);
+
   return (
     <>
-      {userToken && <Redirect to="/" />}
+      {mutation.isSuccess === true && <Redirect to="/" />}
       <div>
         <h1>Авторизация</h1>
         <form onSubmit={handleSubmit}>

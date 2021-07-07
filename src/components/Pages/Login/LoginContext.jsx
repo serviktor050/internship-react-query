@@ -1,17 +1,20 @@
 import React, { useContext, useReducer } from "react";
 import { createContext } from "react";
 
+/*Констаты */
 const ADD_LOGIN = "ADD_LOGIN";
 const REMOVE_LOGIN = "REMOVE_LOGIN";
 
+/*Создание контекста */
 export const LoginContext = createContext();
 
+/*Создание функции для использования контекста в других компонентах */
 export const useLogin = () => {
   return useContext(LoginContext);
 };
 
+/*Создание редьюсера */
 const reducer = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case ADD_LOGIN:
       return {
@@ -19,6 +22,7 @@ const reducer = (state, action) => {
         userToken: action.payload,
       };
     case REMOVE_LOGIN:
+      localStorage.removeItem("token");
       return {
         ...state,
         userToken: null,
@@ -28,6 +32,7 @@ const reducer = (state, action) => {
   }
 };
 
+/*Создание основного компонента */
 export const LoginProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     userToken: null,

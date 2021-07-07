@@ -1,31 +1,27 @@
-import React /*, { useEffect }*/ from "react";
-// import { useSelector, useDispatch } from "react-redux";
-//import { loginSuccess } from "../../redux/loginPage/actions/actionsCreators";
+import React, { useEffect } from "react";
+import { useLogin } from "../Pages/Login/LoginContext";
 
 export default function Home() {
-  // const dispatch = useDispatch();
-  // const { userToken } = useSelector((state) => state.loginAndRegisterPage);
+  const { userToken, addLogin } = useLogin();
 
-  // let user = JSON.parse(localStorage.getItem("token"));
+  let user = JSON.parse(localStorage.getItem("token"));
 
-  // useEffect(() => {
-  //   if (user !== null) {
-  //     dispatch(loginSuccess({ token: user }));
-  //   }
-  // }, [dispatch, user]);
+  useEffect(() => {
+    if (user !== null) {
+      addLogin(user);
+    }
+  }, [user]);
 
   return (
     <>
       <h1>Главная страница</h1>
-      {/* {userToken === null && (
+      {userToken === null && (
         <p>
           Пройдите регистрацию. Если Вы зарегестрированный пользователь -
           авторизуйтесь!
         </p>
       )}
-      {userToken !== null && userToken.token !== "" && (
-        <p>Авторизация выполнена!</p>
-      )} */}
+      {userToken !== null && <p>Авторизация выполнена!</p>}
     </>
   );
 }

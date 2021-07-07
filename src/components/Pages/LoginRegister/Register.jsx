@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "react-query";
-import { useLogin } from "./LoginContext";
+import { useLoginRegister } from "./LoginRegisterContext";
 import { Redirect } from "react-router-dom";
-import { ADD_LOGIN } from "./LoginContext";
+import { ADD_REGISTER } from "./LoginRegisterContext";
 
-const fetchLogin = async (form) => {
-  const response = await fetch("https://reqres.in/api/login", {
+const fetchRegister = async (form) => {
+  const response = await fetch("https://reqres.in/api/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -19,10 +19,10 @@ const fetchLogin = async (form) => {
   return resultOfFetching;
 };
 
-export default function Login() {
+export default function Register() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const mutation = useMutation(fetchLogin);
-  const { dispatch } = useLogin();
+  const mutation = useMutation(fetchRegister);
+  const { dispatch } = useLoginRegister();
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -36,7 +36,7 @@ export default function Login() {
 
   useEffect(() => {
     if (mutation.data) {
-      dispatch({ type: ADD_LOGIN, payload: mutation.data.token });
+      dispatch({ type: ADD_REGISTER, payload: mutation.data.token });
     }
   }, [dispatch, mutation.isSuccess, mutation.data]);
 
@@ -44,7 +44,7 @@ export default function Login() {
     <>
       {mutation.isSuccess === true && <Redirect to="/" />}
       <div>
-        <h1>Авторизация</h1>
+        <h1>Регистрация</h1>
         <form onSubmit={handleSubmit}>
           <input
             name="email"
@@ -58,7 +58,7 @@ export default function Login() {
             value={form.password}
             onChange={handleChange}
           />
-          <button>Войти</button>
+          <button>Отправить</button>
         </form>
       </div>
     </>

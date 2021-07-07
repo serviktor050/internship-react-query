@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useLogin } from "../components/Pages/Login/LoginContext";
+import { useLoginRegister } from "./Pages/LoginRegister/LoginRegisterContext";
 
 export default function Menu() {
-  const { userToken, removeLogin } = useLogin();
+  const { userToken, removeLogin } = useLoginRegister();
 
   return (
     <>
@@ -19,11 +19,11 @@ export default function Menu() {
               Login
             </NavLink>
           </div>
-          {/* <div className="menu-item">
+          <div className="menu-item">
             <NavLink to="/register" activeClassName="menu-item-selected">
               Register
             </NavLink>
-          </div> */}
+          </div>
         </div>
       )}
       {userToken !== null && (

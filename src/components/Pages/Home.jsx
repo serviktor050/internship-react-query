@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useLogin } from "../Pages/Login/LoginContext";
-import { ADD_LOGIN } from "../Pages/Login/LoginContext";
+import { useLoginRegister } from "./LoginRegister/LoginRegisterContext";
+import { ADD_LOGIN } from "./LoginRegister/LoginRegisterContext";
 
 export default function Home() {
-  const { userToken, dispatch } = useLogin();
+  const { userToken, dispatch } = useLoginRegister();
 
   let user = JSON.parse(localStorage.getItem("token"));
 

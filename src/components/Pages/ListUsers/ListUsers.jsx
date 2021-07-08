@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useLoginRegister } from "../LoginRegister/LoginRegisterContext";
 import { Redirect, useHistory } from "react-router-dom";
@@ -12,9 +12,11 @@ const fetchListUsers = async (key) => {
   return res.json();
 };
 
-export default function ListUsers() {
+export default function ListUsers(props) {
+  let pageNumber = props.location.search.substr(6);
+
   const { userToken } = useLoginRegister();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(pageNumber || 1);
   const { data, status } = useQuery(["listUsers", page], fetchListUsers, {
     keepPreviousData: true,
   });

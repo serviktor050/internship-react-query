@@ -42,7 +42,7 @@ export default function Menu() {
               Пользователи
             </NavLink>
           </div>
-          {/* <div className="menu-item">
+          <div className="menu-item">
             <NavLink
               to="/mortgage-calculator"
               activeClassName="menu-item-selected"
@@ -51,7 +51,7 @@ export default function Menu() {
               Расчитать ипотеку
             </NavLink>
           </div>
-          <div className="menu-item">
+          {/* <div className="menu-item">
             <NavLink to="/timer" activeClassName="menu-item-selected" exact>
               Таймер
             </NavLink>

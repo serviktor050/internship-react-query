@@ -15,8 +15,6 @@ export default function User(props) {
   const { data, status } = useQuery(["user", id], fetchUser);
   const history = useHistory();
 
-  console.log(history);
-
   return (
     <>
       {userToken === null && <Redirect to="/" />}

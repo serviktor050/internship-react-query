@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useLoginRegister } from "../LoginRegister/LoginRegisterContext";
 import { Redirect, useHistory } from "react-router-dom";

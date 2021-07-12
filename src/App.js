@@ -12,26 +12,32 @@ import "antd/dist/antd.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { LoginRegisterProvider } from "./components/Pages/LoginRegister/LoginRegisterContext";
+import { MortgageCalculatorMenuProvider } from "./components/Pages/MortgageCalculator/MortgageCalculatorContexts/MortgageCalculatorContextMenu";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <LoginRegisterProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <Menu />
-          <Switch>
-            <Route path="/mortgage-calculator" component={MortgageCalculator} />
-            <Route path="/list-users/user-:id" component={User} />
-            <Route path="/list-users" component={ListUsers} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <Route exact path="/" component={Home} />
-          </Switch>
-        </Router>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <MortgageCalculatorMenuProvider>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Menu />
+            <Switch>
+              <Route
+                path="/mortgage-calculator"
+                component={MortgageCalculator}
+              />
+              <Route path="/list-users/user-:id" component={User} />
+              <Route path="/list-users" component={ListUsers} />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </Router>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </MortgageCalculatorMenuProvider>
     </LoginRegisterProvider>
   );
 }

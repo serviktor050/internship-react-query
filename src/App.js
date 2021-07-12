@@ -8,6 +8,7 @@ import Register from "./components/Pages/LoginRegister/Register";
 import ListUsers from "./components/Pages/ListUsers/ListUsers";
 import User from "./components/Pages/User/User";
 import MortgageCalculator from "./components/Pages/MortgageCalculator/MortgageCalculator";
+import Timer from "./components/Pages/Timer/Timer";
 import "antd/dist/antd.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -26,6 +27,7 @@ function App() {
             <Router>
               <Menu />
               <Switch>
+                <Route path="/timer" component={Timer} />
                 <Route
                   path="/mortgage-calculator"
                   component={MortgageCalculator}

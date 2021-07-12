@@ -10,6 +10,9 @@ import { getCostOfRealEstate } from "../MortgageCalculator/CalculationFunctions/
 import CreditInformation from "./Info/CreditInformation";
 import PaymentInformation from "./Info/PaymentInformation";
 import RealtyInformation from "./Info/RealtyInformation";
+import CalculatorChartCredit from "./CalculatorChart/CalculatorChartCredit";
+import CalculatorChartPayment from "./CalculatorChart/CalculatorChartPayment";
+import CalculatorChartRealty from "./CalculatorChart/CalculatorChartRealty";
 
 export default function Calculator() {
   const { form } = useMortgageCalculatorMenu();
@@ -120,6 +123,9 @@ export default function Calculator() {
             </div>
           </div>
         </form>
+        {form === "realty" && <CalculatorChartRealty />}
+        {form === "credit" && <CalculatorChartCredit />}
+        {form === "payment" && <CalculatorChartPayment />}
       </div>
     </>
   );

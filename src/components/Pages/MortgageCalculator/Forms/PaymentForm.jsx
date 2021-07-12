@@ -14,7 +14,6 @@ export default function PaymentForm() {
     changeLoanTermField,
     changeInterestRateField,
     changeMonthlyPaymentField,
-    dispatch,
   } = useMortgageCalculatorForm();
 
   return (
@@ -96,7 +95,7 @@ export default function PaymentForm() {
             type="text"
             name="interestRate"
             onChange={(evt) => {
-              dispatch(changeInterestRateField(evt.target.value));
+              changeInterestRateField(evt.target.value);
             }}
             value={interestRate}
           />
@@ -106,7 +105,7 @@ export default function PaymentForm() {
             max={30}
             step={0.1}
             onChange={(value) => {
-              dispatch(changeInterestRateField(value));
+              changeInterestRateField(value);
             }}
             value={interestRate}
           />
